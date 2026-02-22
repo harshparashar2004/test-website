@@ -1,7 +1,85 @@
 <html>
-<body style="background-color: yellowgreen;">
+<body style="background-color: rgb(189, 114, 114);">
     <h1>Welcome to HARSH</h1>
     <p>This is the homepage of HARSH.</p>
 </body>    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARSH - Home</title>
+    <link rel="stylesheet" href="happy.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Welcome to HARSH</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="toggle-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="profile-section">
+            <h2>About Me</h2>
+            <p class="profile-intro">Hi, I'm <strong>Harsh Parashar</strong>, a DevOps enthusiast and developer passionate about automating infrastructure and building scalable solutions.</p>
+        </section>
 
-<html>
+        <section class="devops-section">
+            <h2>DevOps Technologies</h2>
+            <div class="devops-grid">
+                <div class="devops-card">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=400&h=300&fit=crop" alt="Docker Containers" class="devops-image">
+                    <h3>Containerization</h3>
+                    <p>Docker and container orchestration for deploying applications efficiently.</p>
+                </div>
+
+                <div class="devops-card">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop" alt="Cloud Infrastructure" class="devops-image">
+                    <h3>Cloud Infrastructure</h3>
+                    <p>Building and managing scalable infrastructure on AWS, Azure, and GCP.</p>
+                </div>
+
+                <div class="devops-card">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="CI/CD Pipeline" class="devops-image">
+                    <h3>CI/CD Pipelines</h3>
+                    <p>Automating build, test, and deployment processes for continuous delivery.</p>
+                </div>
+
+                <div class="devops-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Kubernetes Orchestration" class="devops-image">
+                    <h3>Kubernetes Orchestration</h3>
+                    <p>Orchestrating containerized applications with Kubernetes for high availability.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const toggleIcon = document.querySelector('.toggle-icon');
+
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme-preference') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        updateToggleIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme');
+            const newTheme = theme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme-preference', newTheme);
+            updateToggleIcon(newTheme);
+        });
+
+        function updateToggleIcon(theme) {
+            toggleIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+    </script>
+</body>
+</html>
