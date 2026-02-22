@@ -1,7 +1,48 @@
-<html>
-<body style="background-color: lightseagreen;">
-    <h1>Welcome to HARSH</h1>
-    <p>This is the homepage of HARSH.</p>
-</body>    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARSH - Home</title>
+    <link rel="stylesheet" href="happy.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Welcome to HARSH</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="toggle-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+    
+    <main class="container">
+        <p>This is the homepage of HARSH.</p>
+    </main>
 
-<html>
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const toggleIcon = document.querySelector('.toggle-icon');
+
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme-preference') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        updateToggleIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme');
+            const newTheme = theme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme-preference', newTheme);
+            updateToggleIcon(newTheme);
+        });
+
+        function updateToggleIcon(theme) {
+            toggleIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+    </script>
+</body>
+</html>
