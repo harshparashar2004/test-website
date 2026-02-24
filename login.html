@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Login - HARSH</title>
+    <link rel="stylesheet" href="happy.css">
+    <script>
+        // Apply saved theme as early as possible to avoid flash
+        try {
+            const theme = localStorage.getItem('theme-preference') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+    </script>
+</head>
+<body>
+    <main class="login-container">
+        <form id="loginForm" class="login-card" autocomplete="off">
+            <h2>Sign In</h2>
+            <p class="login-sub">Enter your credentials to continue.</p>
+
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" required autofocus>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required>
+
+            <div class="login-actions">
+                <button type="submit" class="btn-primary">Login</button>
+            </div>
+
+            <p id="loginError" class="login-error" aria-live="polite"></p>
+        </form>
+    </main>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorEl = document.getElementById('loginError');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+
+            // Credentials: username = "harsh", password = "king"
+            if (username === 'harsh' && password === 'king') {
+                localStorage.setItem('loggedIn', 'true');
+                window.location.href = 'index.html';
+            } else {
+                errorEl.textContent = 'Invalid username or password.';
+            }
+        });
+    </script>
+</body>
+</html>
