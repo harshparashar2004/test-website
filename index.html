@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>git 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HARSH - Home</title>
@@ -53,6 +53,17 @@
     </main>
 
     <script>
+        // Auth check: require login before accessing this page
+        try {
+            const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+            }
+        } catch (e) {
+            // if localStorage is unavailable, still redirect to login to be safe
+            window.location.href = 'login.html';
+        }
+
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
